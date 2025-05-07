@@ -31,3 +31,23 @@ def test_multiply(a, b, expected):
 def test_divide(a, b, expected):
     result = utils.divide(a, b)
     assert result == expected
+
+
+@pytest.mark.parametrize(
+    "a, expected ", [(4, 100), (10, 1010), (24, 11000), (100, 1100100)]
+)
+def test_to_binary(a, expected):
+    result = utils.to_binary(a)
+    assert result == expected
+
+
+@pytest.mark.parametrize("a, expected ", [(-1, -1), (120, -1), (0, 0), (100, 1100100)])
+def test_to_binary_range(a, expected):
+    result = utils.to_binary(a)
+    assert result == expected
+
+
+@pytest.mark.parametrize("a, expected ", [(-20, -1), (-1, -1), (32.2, -1), (0.1, -1)])
+def test_to_binary_natural(a, expected):
+    result = utils.to_binary(a)
+    assert result == expected
