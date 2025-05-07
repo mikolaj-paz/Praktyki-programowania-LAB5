@@ -22,14 +22,18 @@ def divide(a: int, b: int) -> float:
     """Divides one integer by another. Returns float"""
     return a / b
 
+
 def to_binary(a) -> int:
     """Converts a number to binary."""
-    if (not isinstance(a, int) or not 0 <= a <= 100):
+    if not isinstance(a, int) or not 0 <= a <= 100:
         return -1
-    
-    res = ''
+
+    if a == 0:
+        return 0
+
+    res: str = ""
     while a > 0:
         res = str(a & 1) + res
         a >>= 1
-    
+
     return int(res)
